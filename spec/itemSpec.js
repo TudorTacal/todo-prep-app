@@ -6,7 +6,7 @@ describe("Item", function(){
     item = new Item("Hello");
   });
 
-  it("should return true", function(){
+  it("be type of Item", function(){
     expect(item).toEqual(jasmine.any(Item));
   });
 
