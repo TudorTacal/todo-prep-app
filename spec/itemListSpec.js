@@ -3,7 +3,11 @@ describe("ItemList", function () {
 
   beforeEach(function (){
     itemList = new ItemList();
-    item = jasmine.createSpyObj('item',['getText','setText']);
+    item = { getText: function(){
+      return true
+    // spyOn(item, "getText").and.returnValue(true);
+    }}
+
   })
 
   it("should be type of ItemList", function (){
@@ -19,5 +23,13 @@ describe("ItemList", function () {
       itemList.addItem(item);
       expect(itemList.getItems()).toEqual([item]);
     });
+  });
+
+  describe("#deleteItem", function(){
+    it("should remove an item from the list", function(){
+      itemList.addItem(item);
+      itemList.deleteItem(1);
+      expect(itemList.getItems()).toEqual([]);
+    })
   });
 });
