@@ -3,10 +3,14 @@ describe("ItemList", function () {
 
   beforeEach(function (){
     itemList = new ItemList();
-    item = { getText: function(){
-      return true
-    // spyOn(item, "getText").and.returnValue(true);
-    }}
+    item = {
+      getText: function(){
+        return true
+      },
+      setText: function(text) {
+        return text
+      }
+    }
 
   })
 
@@ -31,5 +35,14 @@ describe("ItemList", function () {
       itemList.deleteItem(1);
       expect(itemList.getItems()).toEqual([]);
     })
+  });
+
+  describe("#updateItem", function(){
+    it("should update and item from the list", function(){
+      spyOn(item, "setText")
+      itemList.addItem(item);
+      itemList.updateItem(1, "Hello");
+      expect(item.setText).toHaveBeenCalledWith("Hello")
+    });
   });
 });
