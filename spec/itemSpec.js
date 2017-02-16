@@ -14,6 +14,11 @@ describe("Item", function(){
     it("returns the item's text", function () {
       expect(item.getText()).toEqual("Hello")
     });
+
+    it("should be able to modify it's text", function(){
+      item.setText("Hola");
+      expect(item.getText()).toEqual("Hola");
+    });
   });
 
 })
