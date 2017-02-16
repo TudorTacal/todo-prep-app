@@ -6,4 +6,8 @@ describe("ItemList", function () {
   it("should be type of ItemList", function (){
     expect(itemList).toEqual(jasmine.any(ItemList))
   })
+
+  it("is initialized with an empty array", function(){
+    expect(itemList.getItems()).toEqual([]);
+  });
 })
